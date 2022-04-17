@@ -92,7 +92,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     nLimitedChar: 24,
                     isContr: undercontrol,
                     fnContr: (input) {
-                      undercontrol = input;
+                      setState(() {
+                        undercontrol = input;
+                      });
                     },
                     sValue: BarcodeText,
                     returnfunc: (String s) {
@@ -106,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: ElevatedButton(
                     child: const Text('ENTER'),
                     onPressed: () {
-                      // print(BarcodeText.length);
+                      // print(BarcodeText);
                       if (BarcodeText.length == 24) {
                         context
                             .read<SendBarcode_Bloc>()
@@ -134,7 +136,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     child: const Text('CLEAR'),
                     onPressed: () {
-                      html.window.location.reload();
+                      // html.window.location.reload();
+                      setState(() {
+                        undercontrol = true;
+                        BarcodeText = '';
+                      });
                     },
                   ),
                 ),
