@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
+            debugShowCheckedModeBanner: false,
             home: buffer01(),
           );
         }));
@@ -69,11 +70,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     maincon = context;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: Container(
           height: 200,
           width: 300,
           child: Card(
+            color: Colors.white,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -106,18 +109,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 250,
                   height: 35,
                   child: ElevatedButton(
-                    child: const Text('ENTER'),
+                    child: const Text('ENTER', style: TextStyle(color: Colors.white)),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                    ),
                     onPressed: () {
                       // print(BarcodeText);
                       if (BarcodeText.length == 24) {
-                        context
-                            .read<SendBarcode_Bloc>()
-                            .add(SendBarcode_Pressed());
+                        context.read<SendBarcode_Bloc>().add(SendBarcode_Pressed());
                         onLoadingType01(
-                            context,
-                            () {},
-                            BlocProvider.of<BlocPageRebuild>(context)
-                                .rebuildPage());
+                            context, () {}, BlocProvider.of<BlocPageRebuild>(context).rebuildPage());
                       } else {
                         basicpopup(context);
                       }
@@ -132,9 +136,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 35,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.red,
+                      backgroundColor: Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
                     ),
-                    child: const Text('CLEAR'),
+                    child: const Text('CLEAR', style: TextStyle(color: Colors.white)),
                     onPressed: () {
                       // html.window.location.reload();
                       setState(() {

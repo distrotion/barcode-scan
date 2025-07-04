@@ -31,13 +31,31 @@
 
   <title>newproject</title>
   <link rel="manifest" href="manifest.json">
+  <script>
+  window.flutterWebRenderer = "canvaskit";
+  window.flutterConfiguration = {
+    renderer: "canvaskit",
+    canvasKitBaseUrl: "canvaskit/"
+  };
+  </script>
+  <style>
+  @font-face {
+    font-family: 'Roboto';
+    src: url('assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Roboto';
+    font-weight: 700;
+    src: url('assets/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+  }
+  </style>
 </head>
 <body>
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
   <script>
-    var serviceWorkerVersion = '2851660665';
+    const serviceWorkerVersion = "3444341252";
     var scriptLoaded = false;
     function loadMainDartJs() {
       if (scriptLoaded) {
